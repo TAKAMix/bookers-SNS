@@ -4,6 +4,10 @@ class Book < ApplicationRecord
   validates :body,presence:true,length:{maximum:200}
   #コメント機能のアソシエーション
   has_many :book_comments, dependent: :destroy
+  #いいね機能のアソシエーション
+  has_many :favorites, dependent: :destroy
   
-  
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
 end

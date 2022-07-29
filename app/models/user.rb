@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_one_attached :profile_image
   #コメント機能のアソシエーション
   has_many :book_comments, dependent: :destroy
+  #いいね機能のアソシエーション
+  has_many :favorites, dependent: :destroy
   
 
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true

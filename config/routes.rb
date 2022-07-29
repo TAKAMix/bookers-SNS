@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get "home/about"=>"homes#about"
 
   resources :books, only: [:index, :show, :edit, :create, :destroy, :update] do
+  #いいね機能のルーティング
+  resource :favorites, only: [:create, :destroy]
   #コメント機能のルーティング
   resources :book_comments, only: [:create, :destroy]
   end

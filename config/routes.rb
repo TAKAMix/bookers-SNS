@@ -11,8 +11,16 @@ Rails.application.routes.draw do
   #コメント機能のルーティング
   resources :book_comments, only: [:create, :destroy]
   end
+  #フォロー機能のルーティング
+  resources :users, only: [:show] do
+    member do
+      get :following, :followers
+    end
+  end
   
   resources :users, only: [:index, :show, :edit, :update]
+  #フォロー機能のルーティング
+  resources :relationships, only: [:create, :destroy]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

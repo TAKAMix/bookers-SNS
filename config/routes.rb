@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  get 'searches/search'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root :to =>"homes#top"
   devise_for :users
   get "home/about"=>"homes#about"
+  get "search" => "searches#search"
 
   resources :books, only: [:index, :show, :edit, :create, :destroy, :update] do
   #いいね機能のルーティング

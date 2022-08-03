@@ -15,7 +15,7 @@
     <!--フォロー機能実装-->
     <td>フォロー数:<%= user.followings.count %></td>
     <td>フォロワー数:<%= user.followers.count %></td>
-    
+    <% if user != current_user %>
     <% if current_user.following?(user) %>
     <td>
       <%= link_to user_relationships_path(user.id), method: :delete do %>
@@ -28,6 +28,7 @@
         フォローする
       <% end %>
     </td>
+  <% end %>
   <% end %>
         
         

@@ -1,1 +1,2 @@
 $('.book_comments<%= @book.id.to_s %>').html("<%= j(render "books/book_comment", book: @book) %>");
+$('textarea').val("");

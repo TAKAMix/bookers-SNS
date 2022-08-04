@@ -6,7 +6,7 @@ class BookCommentsController < ApplicationController
     comment = current_user.book_comments.new(book_comment_params)
     comment.book_id = @book.id
     if comment.save
-      redirect_to book_path(@book)
+    #非同期通信化実装の為、redirect無し
     else
       #コメントのバリデーションの設定
       @book_comment = comment
@@ -17,8 +17,9 @@ class BookCommentsController < ApplicationController
   end
   
   def destroy
+    @book = Book.find(params[:book_id])
     BookComment.find(params[:id]).destroy
-    redirect_to book_path(params[:book_id])
+     #非同期通信化実装の為、redirect無し
   end
 
   private

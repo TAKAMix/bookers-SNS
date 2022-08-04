@@ -13,6 +13,11 @@ import "bootstrap"
 import '@fortawesome/fontawesome-free/js/all';
 import "../stylesheets/application" 
 
+
+var JQuery = require('jquery')
+global.$ = global.JQuery = JQuery;
+window.$ = window.JQuery = JQuery;
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

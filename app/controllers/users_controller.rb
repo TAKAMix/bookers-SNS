@@ -5,6 +5,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
+  end
+
+  def index
+    @user = User.find(params[:id])
+    @users = User.all
+    @book = Book.new
     #DM機能の実装
     @currentUserEntry=Entry.where(user_id: current_user.id)
     @userEntry=Entry.where(user_id: @user.id)
@@ -23,11 +29,6 @@ class UsersController < ApplicationController
         @entry = Entry.new
       end
     end
-  end
-
-  def index
-    @users = User.all
-    @book = Book.new
   end
 
   def edit
